@@ -29,9 +29,7 @@ public class AutorDTO {
     }
 
     private List<String> obtenerNombreLibros(List<Libro> listLibros){
-
         if(listLibros == null) return null;
-
         return listLibros.stream()
                 .map(Libro::getTitulo)
                 .collect(Collectors.toList());

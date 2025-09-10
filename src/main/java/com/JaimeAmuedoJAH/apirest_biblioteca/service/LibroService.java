@@ -20,6 +20,12 @@ public class LibroService implements ILibro{
     public Libro saveLibro(Libro libro) {
         return libroRepository.save(libro);
     }
+
+    @Override
+    public List<Libro> saveAllLibros(List<Libro> libroList) {
+        return libroRepository.saveAll(libroList);
+    }
+
     /*Importante esta estructura para que al recoger datos se muestren con el formato del DTO*/
     @Override
     public List<LibroDTO> findAll() {

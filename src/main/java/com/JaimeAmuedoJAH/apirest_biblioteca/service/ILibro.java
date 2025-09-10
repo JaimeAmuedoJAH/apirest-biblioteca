@@ -9,6 +9,8 @@ public interface ILibro {
 
     Libro saveLibro(Libro libro);
 
+    List<Libro> saveAllLibros(List<Libro> libroList);
+
     List<LibroDTO> findAll();
 
     LibroDTO findById(Integer id);

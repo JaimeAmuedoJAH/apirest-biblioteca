@@ -21,6 +21,11 @@ public class LibroController {
         return iLibro.saveLibro(libro);
     }
 
+    @PostMapping("/create/listalibros")
+    public List<Libro> saveAllLibros(List<Libro> libroList){
+        return iLibro.saveAllLibros(libroList);
+    }
+
     @GetMapping("/read/libros")
     public List<LibroDTO> findAll(){
 

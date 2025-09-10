@@ -1,5 +1,6 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -22,6 +23,7 @@ public class Autor {
 
     private String biografia;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fecha_nacimiento;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)

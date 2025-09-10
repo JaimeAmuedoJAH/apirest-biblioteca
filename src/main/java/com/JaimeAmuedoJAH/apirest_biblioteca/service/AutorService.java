@@ -22,6 +22,11 @@ public class AutorService implements IAutor{
     }
 
     @Override
+    public List<Autor> saveAllAutores(List<Autor> autorList) {
+        return autorRepository.saveAll(autorList);
+    }
+
+    @Override
     public List<AutorDTO> findAll() {
         return autorRepository.findAll()
                 .stream()

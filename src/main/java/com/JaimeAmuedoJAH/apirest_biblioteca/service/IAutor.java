@@ -9,6 +9,8 @@ public interface IAutor {
 
     Autor saveAutor(Autor autor);
 
+    List<Autor> saveAllAutores(List<Autor> autorList);
+
     List<AutorDTO> findAll();
 
     AutorDTO findById(Integer id);

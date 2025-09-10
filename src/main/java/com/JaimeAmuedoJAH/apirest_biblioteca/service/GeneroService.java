@@ -1,5 +1,6 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
+import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.GeneroRepository;
 import org.springframework.stereotype.Service;
@@ -17,26 +18,41 @@ public class GeneroService implements IGenero{
 
     @Override
     public Genero saveGenero(Genero genero) {
-        return null;
+        return generoRepository.save(genero);
     }
 
     @Override
-    public List<Genero> findAll() {
-        return List.of();
+    public List<Genero> saveAllGeneros(List<Genero> generoList) {
+        return generoRepository.saveAll(generoList);
     }
 
     @Override
-    public Genero findById(Integer id) {
-        return null;
+    public List<GeneroDTO> findAll() {
+        return generoRepository.findAll()
+                .stream()
+                .map(GeneroDTO::new)
+                .toList();
+    }
+
+    @Override
+    public GeneroDTO findById(Integer id) {
+        return generoRepository.findById(id)
+                .map(GeneroDTO::new)
+                .orElse(null);
     }
 
     @Override
     public Genero updateGenero(Genero genero) {
-        return null;
+        Genero generoDB = generoRepository.findById(genero.getId()).get();
+
+        generoDB.setNombre(genero.getNombre());
+        generoDB.setListLibro(genero.getListLibro());
+
+        return generoRepository.save(generoDB);
     }
 
     @Override
     public void deleteById(Integer id) {
-
+        generoRepository.deleteById(id);
     }
 }

@@ -21,6 +21,11 @@ public class AutorController {
         return iAutor.saveAutor(autor);
     }
 
+    @PostMapping("/create/listaautores")
+    public List<Autor> saveAllAutores(List<Autor>autorList){
+        return iAutor.saveAllAutores(autorList);
+    }
+
     @GetMapping("/read/autores")
     public List<AutorDTO> findAll(){
         return iAutor.findAll();
