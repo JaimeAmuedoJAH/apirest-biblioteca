@@ -1,6 +1,7 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
+import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.LibroRepository;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,22 @@ public class LibroService implements ILibro{
         return libroRepository.findById(id)
                 .map(LibroDTO::new)
                 .orElse(null);
+    }
+
+    @Override
+    public List<LibroDTO> obtenerLibroPorGenero(Integer id) {
+        return libroRepository.findByGeneroId(id)
+                .stream()
+                .map(LibroDTO::new)
+                .toList();
+    }
+
+    @Override
+    public List<LibroDTO> obtenerLibroPorAutor(Integer id) {
+        return libroRepository.findByAutorId(id)
+                .stream()
+                .map(LibroDTO::new)
+                .toList();
     }
 
     @Override

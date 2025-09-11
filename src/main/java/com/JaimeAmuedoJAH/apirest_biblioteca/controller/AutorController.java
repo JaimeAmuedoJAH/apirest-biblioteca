@@ -31,8 +31,9 @@ public class AutorController {
         return iAutor.findAll();
     }
 
-    @GetMapping("/read/autor/{id}")
-    public AutorDTO findById(@PathVariable Integer id){
+    @GetMapping("/read/autor")
+    public AutorDTO findById(@RequestParam Integer id){
+
         return iAutor.findById(id);
     }
 
@@ -41,8 +42,8 @@ public class AutorController {
         return iAutor.updateAutor(autor);
     }
 
-    @DeleteMapping("/delete/autor/{id}")
-    public void deleteById(@PathVariable Integer id){
+    @DeleteMapping("/delete/autor")
+    public void deleteById(@RequestParam Integer id){
         iAutor.deleteById(id);
     }
 }

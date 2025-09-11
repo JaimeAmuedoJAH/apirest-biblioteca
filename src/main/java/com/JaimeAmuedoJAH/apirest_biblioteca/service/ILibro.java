@@ -18,4 +18,8 @@ public interface ILibro {
     Libro updateLibro(Libro libro);
 
     void deleteById(Integer id);
+
+    List<LibroDTO> obtenerLibroPorGenero(Integer id);
+
+    List<LibroDTO> obtenerLibroPorAutor(Integer id);
 }

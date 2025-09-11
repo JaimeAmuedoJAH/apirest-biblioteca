@@ -1,6 +1,7 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.controller;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
+import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
 import com.JaimeAmuedoJAH.apirest_biblioteca.service.ILibro;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,18 @@ public class LibroController {
         return iLibro.findAll();
     }
     @GetMapping("/read/libro/{id}")
-    public LibroDTO findById(@PathVariable Integer id){
+    public LibroDTO findById(@RequestParam Integer id){
         return iLibro.findById(id);
+    }
+
+    @GetMapping("/read/libros/genero")
+    public List<LibroDTO> obtenerLibroPorGenero(@RequestParam Integer id) {
+        return iLibro.obtenerLibroPorGenero(id);
+    }
+
+    @GetMapping("/read/libros/autor")
+    public List<LibroDTO> obtenerLibroPorAutor(@RequestParam Integer id) {
+        return iLibro.obtenerLibroPorAutor(id);
     }
 
     @PutMapping("/update/libro")
@@ -41,8 +52,8 @@ public class LibroController {
         return iLibro.updateLibro(libro);
     }
 
-    @DeleteMapping("/delete/libro/{id}")
-    public void deleteById(@PathVariable Integer id){
+    @DeleteMapping("/delete/libro")
+        public void deleteById(@RequestParam Integer id){
         iLibro.deleteById(id);
     }
 }
