@@ -1,5 +1,12 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.exception;
 
+/**
+ * Clase de utilidad para lanzar excepciones personalizadas.
+ *
+ * Proporciona métodos estáticos que permiten verificar condiciones
+ * y lanzar excepciones de negocio en caso de incumplimiento.
+ */
+
 public class LanzaExcepciones {
 
     public static BadRequestException lanzarBadRequest(String mensaje){

@@ -1,13 +1,19 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
-import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.GeneroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ * Interfaz de servicio para la gestión de géneros literarios.
+ *
+ * Define operaciones CRUD para la entidad Género,
+ * utilizando objetos {@link GeneroDTO}.
+ */
 
 @Service
 public class GeneroService implements IGenero{

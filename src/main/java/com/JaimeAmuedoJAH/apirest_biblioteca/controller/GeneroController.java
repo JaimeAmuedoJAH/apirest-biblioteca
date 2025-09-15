@@ -2,7 +2,7 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.controller;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
-import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
+import com.JaimeAmuedoJAH.apirest_biblioteca.service.GeneroService;
 import com.JaimeAmuedoJAH.apirest_biblioteca.service.IGenero;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,6 +11,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * Controlador REST para gestionar géneros literarios.
+ *
+ * Expone endpoints CRUD para crear, obtener, actualizar y eliminar géneros.
+ * Utiliza el servicio {@link GeneroService}.
+ */
 
 @RestController
 @Tag(name = "Géneros", description = "Gestión de géneros de libros")

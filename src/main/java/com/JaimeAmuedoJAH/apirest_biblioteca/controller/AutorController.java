@@ -2,7 +2,7 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.controller;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.AutorDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Autor;
-import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
+import com.JaimeAmuedoJAH.apirest_biblioteca.service.AutorService;
 import com.JaimeAmuedoJAH.apirest_biblioteca.service.IAutor;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,6 +11,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * Controlador REST para gestionar autores.
+ *
+ * Expone endpoints para crear, obtener, actualizar y eliminar autores.
+ * Utiliza el servicio {@link AutorService} para la lógica de negocio.
+ */
 
 @RestController
 @Tag(name = "Autores", description = "Gestión de autores de libros")

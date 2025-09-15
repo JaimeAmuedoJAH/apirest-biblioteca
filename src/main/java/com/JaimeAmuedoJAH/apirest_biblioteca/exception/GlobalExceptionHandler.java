@@ -5,6 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * Manejador global de excepciones para la API REST.
+ *
+ * Centraliza la gestión de errores y convierte las excepciones
+ * en respuestas HTTP estandarizadas.
+ */
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

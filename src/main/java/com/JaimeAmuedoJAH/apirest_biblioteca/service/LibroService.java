@@ -1,7 +1,6 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
-import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
 import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.AutorRepository;
@@ -11,6 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ * Interfaz de servicio para la gestión de libros.
+ *
+ * Define operaciones CRUD para la entidad Libro,
+ * trabajando con objetos {@link LibroDTO}.
+ */
 
 @Service
 public class LibroService implements ILibro{

@@ -1,10 +1,9 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.controller;
 
-import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
-import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.service.ILibro;
+import com.JaimeAmuedoJAH.apirest_biblioteca.service.LibroService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -12,6 +11,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * Controlador REST para gestionar libros.
+ *
+ * Expone endpoints CRUD para crear, obtener, actualizar y eliminar libros.
+ * Utiliza el servicio {@link LibroService}.
+ */
 
 @RestController
 @Tag(name = "Libros", description = "Gestión de libros")

@@ -2,8 +2,14 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.dto;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDate;
+
+/**
+ * DTO (Data Transfer Object) para la entidad Libro.
+ *
+ * Permite transportar datos del libro entre capas de la aplicación,
+ * incluyendo las relaciones con autor y género.
+ */
 
 public class LibroDTO {
 

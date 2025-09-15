@@ -10,6 +10,13 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+/**
+ * Entidad que representa un Libro en la biblioteca.
+ *
+ * Un libro está asociado a un autor y a un género específico.
+ * Contiene información básica como título, año de publicación y editorial.
+ */
+
 @Entity
 @Table(name = "libro")
 /* Evita ciclos infinitos en la serialización JSON.

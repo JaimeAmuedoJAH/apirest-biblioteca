@@ -1,10 +1,13 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
-import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 
 import java.util.List;
+
+/**
+ * Interfaz de servicio para gestionar operaciones relacionadas con los géneros literarios.
+ */
 
 public interface IGenero {
 

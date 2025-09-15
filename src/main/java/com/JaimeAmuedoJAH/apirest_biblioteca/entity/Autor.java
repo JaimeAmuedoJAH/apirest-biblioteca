@@ -11,6 +11,13 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Entidad que representa a un Autor en el sistema de la biblioteca.
+ *
+ * Un autor puede tener múltiples libros asociados.
+ * Esta clase se mapea a la tabla "autor" en la base de datos.
+ */
+
 @Entity
 @Table(name="autor")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")

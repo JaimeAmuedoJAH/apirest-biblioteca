@@ -2,8 +2,14 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.dto;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
-
 import java.util.List;
+
+/**
+ * DTO (Data Transfer Object) para la entidad Género.
+ *
+ * Se usa para transferir datos de género en operaciones CRUD
+ * sin exponer directamente la entidad {@link Genero}.
+ */
 
 public class GeneroDTO {
 

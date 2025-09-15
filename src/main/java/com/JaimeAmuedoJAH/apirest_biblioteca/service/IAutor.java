@@ -5,6 +5,10 @@ import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Autor;
 
 import java.util.List;
 
+/**
+ * Interfaz de servicio para gestionar operaciones relacionadas con los autores.
+ */
+
 public interface IAutor {
 
     Autor saveAutor(Autor autor);

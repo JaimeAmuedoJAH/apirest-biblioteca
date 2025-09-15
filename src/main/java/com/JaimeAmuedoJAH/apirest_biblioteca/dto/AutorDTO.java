@@ -2,11 +2,16 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.dto;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Autor;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * DTO (Data Transfer Object) para la entidad Autor.
+ *
+ * Se utiliza para transferir datos del autor entre la capa de servicio
+ * y los controladores, evitando exponer directamente la entidad {@link Autor}.
+ */
 
 public class AutorDTO {
 

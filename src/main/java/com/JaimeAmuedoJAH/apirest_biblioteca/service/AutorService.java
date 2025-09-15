@@ -5,8 +5,14 @@ import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Autor;
 import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.AutorRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+/**
+ * Interfaz de servicio para la gestión de autores.
+ *
+ * Define las operaciones principales del CRUD para la entidad Autor,
+ * trabajando con objetos {@link AutorDTO}.
+ */
 
 @Service
 public class AutorService implements IAutor{

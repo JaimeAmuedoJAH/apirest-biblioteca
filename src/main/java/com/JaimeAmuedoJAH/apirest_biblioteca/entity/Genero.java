@@ -8,6 +8,13 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
+/**
+ * Entidad que representa un Género literario en la biblioteca.
+ *
+ * Ejemplos: Ciencia Ficción, Novela, Fantasía, Historia, etc.
+ * Cada género puede estar asociado a múltiples libros.
+ */
+
 @Entity
 @Table(name = "genero")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")

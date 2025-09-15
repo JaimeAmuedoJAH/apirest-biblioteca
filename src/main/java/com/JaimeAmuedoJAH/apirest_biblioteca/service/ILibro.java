@@ -5,6 +5,10 @@ import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
 
 import java.util.List;
 
+/**
+ * Interfaz de servicio para gestionar operaciones relacionadas con los libros.
+ */
+
 public interface ILibro {
 
     Libro saveLibro(Libro libro);
