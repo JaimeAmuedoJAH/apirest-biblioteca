@@ -3,9 +3,9 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BadRequestException extends RuntimeException {
-    public BadRequestException(String message) {
+@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+public class InternalErrorException extends RuntimeException {
+    public InternalErrorException(String message) {
         super(message);
     }
 }

@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,13 +20,18 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Size(min = 2, max = 50)
+    @NotBlank
     private String nombre;
 
+    @Size(min = 2, max = 150)
+    @NotBlank
     private String apellidos;
 
     private String biografia;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @Past
     private LocalDate fecha_nacimiento;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -31,8 +39,7 @@ public class Autor {
 
     public Autor() {}
 
-    public Autor(Integer id, String nombre, String apellidos, String biografia, LocalDate fecha_nacimiento, List<Libro> listLibros) {
-        this.id = id;
+    public Autor(String nombre, String apellidos, String biografia, LocalDate fecha_nacimiento, List<Libro> listLibros) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.biografia = biografia;

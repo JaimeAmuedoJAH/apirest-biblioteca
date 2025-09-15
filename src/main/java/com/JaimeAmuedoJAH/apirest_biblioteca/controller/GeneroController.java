@@ -1,11 +1,8 @@
 package com.JaimeAmuedoJAH.apirest_biblioteca.controller;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
-import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
-import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Libro;
-import com.JaimeAmuedoJAH.apirest_biblioteca.exception.BadRequestException;
-import com.JaimeAmuedoJAH.apirest_biblioteca.exception.ResourceNotFoundException;
+import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.service.IGenero;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -27,13 +24,11 @@ public class GeneroController {
 
     @Operation(summary = "Crea un genero nuevo")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "El nombre del género no puede estar vacío")
+            @ApiResponse(responseCode = "400", description = "El nombre del género no puede estar vacío"),
+            @ApiResponse(responseCode = "400", description = "El nombre tiene que estar entre 2 y 50 caracteres")
     })
     @PostMapping("create/genero")
     public Genero saveGenero(@RequestBody Genero genero){
-        if(genero.getNombre() == null){
-            throw new BadRequestException("El nombre del género no puede estar vacío");
-        }
         return iGenero.saveGenero(genero);
     }
 
@@ -43,15 +38,6 @@ public class GeneroController {
     })
     @PostMapping("create/listageneros")
     public List<Genero> saveAllGeneros(@RequestBody List<Genero> generoList){
-        if(generoList.isEmpty()){
-            throw new BadRequestException("Rellena al menos un campo");
-        }
-
-        for(Genero genero : generoList){
-            if(genero.getNombre() == null){
-                throw new BadRequestException("El nombre de los géneros no puede estar vacío");
-            }
-        }
         return iGenero.saveAllGeneros(generoList);
     }
 
@@ -61,13 +47,7 @@ public class GeneroController {
     })
     @GetMapping("/read/generos")
     public List<GeneroDTO> findAll(){
-
-        List<GeneroDTO> lista = iGenero.findAll();
-
-        if(lista.isEmpty()){
-            throw new ResourceNotFoundException("No existe ningun registro");
-        }
-        return  lista;
+        return  iGenero.findAll();
     }
 
     @Operation(summary = "Busca un genero por ID")
@@ -76,11 +56,7 @@ public class GeneroController {
     })
     @GetMapping("/read/genero")
     public GeneroDTO findById(@RequestParam Integer id){
-        GeneroDTO genero = iGenero.findById(id);
-        if(genero == null){
-            throw new ResourceNotFoundException("genero", id);
-        }
-        return genero;
+        return iGenero.findById(id);
     }
 
     @Operation(summary = "Actualiza un género")

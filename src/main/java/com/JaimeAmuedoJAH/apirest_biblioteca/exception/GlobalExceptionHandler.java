@@ -24,5 +24,4 @@ public class GlobalExceptionHandler {
                 .body("Error inesperado: " + ex.getMessage());
     }
 
-
 }

@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -19,6 +22,7 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Size(min = 2, max = 150)
     private String titulo;
 
     private String descripcion;
@@ -32,6 +36,7 @@ public class Libro {
     private Genero genero;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @PastOrPresent
     private LocalDate fecha_publicacion;
 
     public Libro() {}

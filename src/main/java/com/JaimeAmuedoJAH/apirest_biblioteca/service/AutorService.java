@@ -2,6 +2,7 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.AutorDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Autor;
+import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.AutorRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,27 +19,59 @@ public class AutorService implements IAutor{
 
     @Override
     public Autor saveAutor(Autor autor) {
+        if(autor.getNombre().isBlank() || autor.getApellidos().isBlank()){
+            LanzaExcepciones.lanzarBadRequest("El nombre y el apellido no pueden estar vacíos");
+        }
+
+        if(autor.getNombre().length() < 2 || autor.getNombre().length() > 50){
+            LanzaExcepciones.lanzarBadRequest("El nombre tiene que tener entre 2 y 50 caracteres");
+        }else if(autor.getApellidos().length() < 2 || autor.getApellidos().length() > 150){
+            LanzaExcepciones.lanzarBadRequest("El apellido tiene que tener entre 2 y 50 caracteres");
+        }
         return autorRepository.save(autor);
     }
 
     @Override
     public List<Autor> saveAllAutores(List<Autor> autorList) {
+        for(Autor autor : autorList){
+            if(autor.getNombre().isBlank() || autor.getApellidos().isBlank()){
+                LanzaExcepciones.lanzarBadRequest("El nombre y el apellido no pueden estar vacíos");
+            }
+
+            if(autor.getNombre().length() < 2 || autor.getNombre().length() > 50){
+                LanzaExcepciones.lanzarBadRequest("El nombre tiene que tener entre 2 y 50 caracteres");
+            }else if(autor.getApellidos().length() < 2 || autor.getApellidos().length() > 150){
+                LanzaExcepciones.lanzarBadRequest("El apellido tiene que tener entre 2 y 50 caracteres");
+            }
+        }
         return autorRepository.saveAll(autorList);
     }
 
     @Override
     public List<AutorDTO> findAll() {
-        return autorRepository.findAll()
+        List<AutorDTO> listaAutores = autorRepository.findAll()
                 .stream()
                 .map(AutorDTO::new)
                 .toList();
+
+        if(listaAutores.isEmpty()){
+            LanzaExcepciones.lanzarNotFound();
+        }
+
+        return listaAutores;
     }
 
     @Override
     public AutorDTO findById(Integer id) {
-        return autorRepository.findById(id)
+        AutorDTO autorDTO = autorRepository.findById(id)
                 .map(AutorDTO::new)
                 .orElse(null);
+
+        if(autorDTO == null){
+            LanzaExcepciones.lanzarNotFound("autor", id);
+        }
+
+        return autorDTO;
     }
 
     @Override

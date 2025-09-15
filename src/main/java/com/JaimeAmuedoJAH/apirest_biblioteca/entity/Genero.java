@@ -3,6 +3,8 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Size(min = 2, max = 50)
     private String nombre;
 
     @OneToMany(mappedBy = "genero", cascade = CascadeType.ALL, orphanRemoval = true)

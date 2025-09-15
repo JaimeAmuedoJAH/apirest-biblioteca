@@ -12,11 +12,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())  // Desactiva CSRF para POST, PUT, DELETE desde Postman
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().authenticated() // Requiere autenticación para todos los endpoints
+                        .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults()); // Forma recomendada en Spring Security 6.1+
+                .httpBasic(withDefaults());
 
         return http.build();
     }

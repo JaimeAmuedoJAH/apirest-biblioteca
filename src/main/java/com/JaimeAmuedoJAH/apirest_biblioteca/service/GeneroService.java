@@ -3,6 +3,7 @@ package com.JaimeAmuedoJAH.apirest_biblioteca.service;
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.GeneroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.dto.LibroDTO;
 import com.JaimeAmuedoJAH.apirest_biblioteca.entity.Genero;
+import com.JaimeAmuedoJAH.apirest_biblioteca.exception.LanzaExcepciones;
 import com.JaimeAmuedoJAH.apirest_biblioteca.repository.GeneroRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,27 +20,57 @@ public class GeneroService implements IGenero{
 
     @Override
     public Genero saveGenero(Genero genero) {
+        if(genero.getNombre() == null){
+            LanzaExcepciones.lanzarBadRequest("El nombre del género no puede estar vacío");
+        } else if(genero.getNombre().length() < 2 || genero.getNombre().length() > 50){
+            LanzaExcepciones.lanzarBadRequest("El nombre tiene que estar entre 2 y 50 caracteres");
+        }
+
         return generoRepository.save(genero);
     }
 
     @Override
     public List<Genero> saveAllGeneros(List<Genero> generoList) {
+        if(generoList.isEmpty()){
+            LanzaExcepciones.lanzarBadRequest("Rellena al menos un campo");
+        }
+
+        for(Genero genero : generoList){
+            if(genero.getNombre() == null){
+                LanzaExcepciones.lanzarBadRequest("El nombre de los géneros no puede estar vacío");
+            }else if(genero.getNombre().length() < 2 || genero.getNombre().length() > 50){
+                LanzaExcepciones.lanzarBadRequest("El nombre tiene que estar entre 2 y 50 caracteres");
+            }
+        }
+
         return generoRepository.saveAll(generoList);
     }
 
     @Override
     public List<GeneroDTO> findAll() {
-        return generoRepository.findAll()
+        List<GeneroDTO> lista = generoRepository.findAll()
                 .stream()
                 .map(GeneroDTO::new)
                 .toList();
+
+        if(lista.isEmpty()){
+            LanzaExcepciones.lanzarNotFound();
+        }
+
+        return lista;
     }
 
     @Override
     public GeneroDTO findById(Integer id) {
-        return generoRepository.findById(id)
+        GeneroDTO genero = generoRepository.findById(id)
                 .map(GeneroDTO::new)
                 .orElse(null);
+
+        if(genero == null){
+            LanzaExcepciones.lanzarNotFound("genero", id);
+        }
+
+        return genero;
     }
 
     @Override
